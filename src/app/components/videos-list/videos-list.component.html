@@ -1,0 +1,15 @@
+<div class="videos-list-wrapper">
+    <h2 class="videos-list-title">
+        All Scenes
+    </h2>
+
+    @if (allVideos.length > 0) {
+        <ul class="list">
+            @for (video of allVideos; track video.id) {
+                <li cdkDrag>
+                    <app-video-card (onVideoSelected)="onClick($event)" [video]="video"></app-video-card>
+                </li>
+            }
+        </ul>
+    }
+</div>

@@ -1,0 +1,23 @@
+<div class="dashboard-page-wrapper">
+  <div class="upper-section">
+    <app-videos-list
+      (onVideoSelected)="setCurrentVideo($event)"
+      [allVideos]="allVideos"
+      cdkDropList
+      #videosList="cdkDropList"
+      [cdkDropListData]="allVideos"
+      [cdkDropListConnectedTo]="trackList"
+    ></app-videos-list>
+    <app-preview [currentVideo]="currentVideo"></app-preview>
+  </div>
+  <div class="lower-section">
+    <app-track
+      cdkDropList
+      [videosList]="trackVideos"
+      [cdkDropListData]="trackVideos"
+      [cdkDropListConnectedTo]="videosList"
+      (cdkDropListDropped)="drop($event)"
+      #trackList="cdkDropList"
+    ></app-track>
+  </div>
+</div>

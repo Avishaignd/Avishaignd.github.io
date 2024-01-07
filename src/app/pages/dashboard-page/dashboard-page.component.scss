@@ -1,0 +1,13 @@
+.dashboard-page-wrapper {
+    padding-inline: 25px;
+    height: 100%;
+
+    .upper-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        .preview {
+            border: 1px solid black;
+        }
+    }
+}
