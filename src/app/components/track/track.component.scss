@@ -5,12 +5,25 @@
     display: flex;
     align-items: center;
     gap: 5px;
-    padding: 15px;
-    --tick-width: ;
+    position: relative;
+    --ticks-amount: ;
 
     .track-item {
+        --item-duration: ;
         border: 1px solid red;
         height: 90%;
-        // width: 
+        
     }
+
+    .ruler {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: black;
+        color: white;
+        display: grid;
+        grid-template-columns: repeat(var(--ticks-amount), 1fr);
+    }
+
 }

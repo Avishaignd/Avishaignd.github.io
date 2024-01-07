@@ -12,10 +12,13 @@ export class TrackComponent {
 
   @Input() videosList: IVideo[] = []
 
-  timelineLength: number = 15
+  timelineLength: number = 16
+  
+  timeLineArray: number[] = [...Array(this.timelineLength).keys()]
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
