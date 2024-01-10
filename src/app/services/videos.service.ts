@@ -23,18 +23,18 @@ const MOCK_VIDEOS: IVideo[] = [
     id: 1,
     href: 'https://content.shuffll.com/files/background-music/1.mp4',
     title: 'Scene 1',
-    duration: '5'
+    duration: 5
   },
   {
     id: 2,
     href: 'https://content.shuffll.com/files/background-music/2.mp4',
     title: 'Scene 2',
-    duration: '5'
+    duration: 5
   },
   {
     id: 3,
     href: 'https://content.shuffll.com/files/background-music/3.mp4',
     title: 'Scene 3',
-    duration: '5'
+    duration: 5
   },
 ]

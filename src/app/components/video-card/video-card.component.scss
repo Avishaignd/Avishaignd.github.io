@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    cursor: grab;
 
     .video-details {
         .title {
@@ -21,5 +22,9 @@
         cursor: pointer;
         border: none;
         background-color: transparent;
+
+        img {
+            max-width: 16px;
+        }
     }
 }

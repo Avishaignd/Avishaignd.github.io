@@ -1,29 +1,59 @@
 .track-wrapper {
-    margin-block-start: 100px;
-    height: 50px;
-    border: 1px solid black;
+  margin-block-start: 40px;
+  height: 75px;
+  border: 1px solid black;
+  position: relative;
+  --ticks-amount: ;
+  overflow-x: auto;
+
+  .track-list {
     display: flex;
-    align-items: center;
-    gap: 5px;
-    position: relative;
-    --ticks-amount: ;
+    padding-top: 20px;
+    white-space: nowrap;
 
     .track-item {
-        --item-duration: ;
-        border: 1px solid red;
-        height: 90%;
-        
+      --item-duration: ;
+      background-color: lightgray;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 15px;
+      color: black;
+      flex-shrink: 0;
+      box-sizing: border-box;
+      cursor: grab;
+      flex-basis: calc((var(--item-duration) / var(--ticks-amount)) * 100%);
     }
 
-    .ruler {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        background-color: black;
-        color: white;
-        display: grid;
-        grid-template-columns: repeat(var(--ticks-amount), 1fr);
+    &.cdk-drop-list-dragging {
+      cursor: grabbing;
     }
+  }
 
+  .ruler {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      flex-basis: calc(100% / var(--ticks-amount));
+    }
+  }
+}
+
+.zoom-btn {
+  border: 1px solid black;
+  background-color: transparent;
+  margin-inline: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  img {
+    max-width: 20px;
+    vertical-align: middle;
+  }
 }

@@ -1,3 +1,9 @@
+<button class="zoom-btn" (click)="updateTrack(true)">
+    <img src="assets/images/magnifying-glass-minus.png" alt="">
+</button>
+<button class="zoom-btn" (click)="updateTrack(false)">
+    <img src="assets/images/magnifying-glass-plus.png" alt="">
+</button>
 <div class="track-wrapper" [style.--ticks-amount]="timelineLength">
     <div class="ruler">
         @for(tick of timeLineArray; track tick) {
@@ -6,9 +12,9 @@
             </span>
         }
     </div>
-    <div class="track-list">
+    <div class="track-list" cdkDropListOrientation="horizontal" cdkDropList (cdkDropListDropped)="onDrop($event)">
         @for(item of videosList; track item) {
-            <span class="track-item" [style.--item-duration]="item.duration">
+            <span class="track-item" cdkDrag [style.--item-duration]="item.duration">
                 {{item.title}}
             </span>
         }

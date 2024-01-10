@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import IVideo from '../video-card/video-card.interface';
 
 @Component({
@@ -12,9 +12,19 @@ export class PreviewComponent {
 
   @Input() currentVideo?: IVideo
 
+  @Input() autoplay: boolean = false
+
+  @Output() onVideoFinished = new EventEmitter
+
   constructor() {}
 
   ngOnInit() {
 
+  }
+
+  videoFinishedPlaying() {
+    if (this.autoplay) {
+      this.onVideoFinished.emit()
+    }
   }
 }

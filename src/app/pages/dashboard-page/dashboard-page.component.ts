@@ -6,7 +6,7 @@ import { PreviewComponent } from '../../components/preview/preview.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {CdkDragDrop, CdkDropList, CdkDrag, copyArrayItem} from '@angular/cdk/drag-drop';
 import { TrackComponent } from '../../components/track/track.component';
-
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-dashboard-page',
@@ -23,12 +23,21 @@ export class DashboardPageComponent {
 
   currentVideo: IVideo = {} as IVideo
 
+  currentVideoIndex: number = 0
+
+  autoplayVideos: boolean = false
+
+  isVideoPlaying: boolean = false
+
+  get videoTotalDuration() {
+    return _.sumBy(this.trackVideos, (video: IVideo) => video.duration)
+  }
+
   constructor(private videosService: VideosService) {}
 
   ngOnInit() {
     this.videosService.videos$.subscribe(videos => {
       this.allVideos = videos
-      this.currentVideo = this.allVideos[0]
     })
     this.videosService.getVideos()
   }
@@ -43,5 +52,23 @@ export class DashboardPageComponent {
     } else {
       copyArrayItem(this.allVideos, this.trackVideos, event.previousIndex, event.currentIndex)
     }
+  }
+
+  playAll() {
+    this.autoplayVideos = true
+    this.currentVideo = this.trackVideos[this.currentVideoIndex]
+    if (this.currentVideoIndex === this.trackVideos.length) {
+      this.isVideoPlaying = false
+    } else {
+      this.isVideoPlaying = true
+    }
+  }
+
+  playNext() {
+    if (this.currentVideoIndex < this.trackVideos.length) {
+      this.currentVideoIndex ++
+      this.playAll()
+    }
+    
   }
 }

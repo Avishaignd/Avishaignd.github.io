@@ -8,12 +8,19 @@
       [cdkDropListData]="allVideos"
       [cdkDropListConnectedTo]="trackList"
     ></app-videos-list>
-    <app-preview [currentVideo]="currentVideo"></app-preview>
+    <app-preview (onVideoFinished)="playNext()" [autoplay]="autoplayVideos" [currentVideo]="currentVideo"></app-preview>
   </div>
+  
+  <button (click)="playAll()" class="play-btn">
+    PLAY ALL
+    <img class="play-btn-icon" [src]="isVideoPlaying ? 'assets/images/pause.png' : 'assets/images/play.png'" alt="">
+  </button>
+
   <div class="lower-section">
     <app-track
       cdkDropList
       [videosList]="trackVideos"
+      [videoTotalDuration]="videoTotalDuration"
       [cdkDropListData]="trackVideos"
       [cdkDropListConnectedTo]="videosList"
       (cdkDropListDropped)="drop($event)"

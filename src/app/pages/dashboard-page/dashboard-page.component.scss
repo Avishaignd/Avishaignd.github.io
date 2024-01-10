@@ -1,13 +1,33 @@
 .dashboard-page-wrapper {
-    padding-inline: 25px;
-    height: 100%;
+  padding-inline: 25px;
+  height: 100%;
 
-    .upper-section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 50px;
-        .preview {
-            border: 1px solid black;
-        }
+  .upper-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    .preview {
+      border: 1px solid black;
     }
+  }
+
+  .play-btn {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    margin-inline-start: auto;
+    cursor: pointer;
+    margin-block-start: 20px;
+    &-icon {
+      max-width: 14px;
+    }
+  }
+
+  .cdk-drop-list-dragging {
+    cursor: grabbing;
+  }
 }
