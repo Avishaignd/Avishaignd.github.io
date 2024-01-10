@@ -21,6 +21,7 @@
       cdkDropList
       [videosList]="trackVideos"
       [videoTotalDuration]="videoTotalDuration"
+      cdkDropListOrientation="horizontal"
       [cdkDropListData]="trackVideos"
       [cdkDropListConnectedTo]="videosList"
       (cdkDropListDropped)="drop($event)"

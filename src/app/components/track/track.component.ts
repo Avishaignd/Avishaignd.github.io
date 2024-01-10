@@ -19,7 +19,9 @@ export class TrackComponent {
   
   timeLineArray: number[] = []
 
-  zoom: number = 16
+  tickWidth: string = ''
+
+  cursorXPos: string = '0px'
 
   constructor() {}
 
@@ -27,8 +29,13 @@ export class TrackComponent {
     this.generateTicks()
   }
 
+  trackClicked(event: PointerEvent) {
+    this.cursorXPos = (event.pageX - 40) + 'px'
+  }
+
   ngOnChanges(changes: SimpleChange) {
     this.timelineLength = Math.max(15, Math.ceil(this.videoTotalDuration))
+    this.tickWidth = 100 / this.timelineLength + '%'
     this.generateTicks()
   }
 
@@ -38,14 +45,14 @@ export class TrackComponent {
 
   updateTrack(increase: boolean) {
     if (increase) {
-      this.zoom += 5
+      this.timelineLength += 5
     } else {
-      this.zoom -= 5
+      this.timelineLength -= 5
     }
     this.generateTicks()
   }
 
-  onDrop(event: CdkDragDrop<any>) {
+  onDrop(event: CdkDragDrop<IVideo>) {
     moveItemInArray(this.videosList, event.previousIndex, event.currentIndex);
   }
 }

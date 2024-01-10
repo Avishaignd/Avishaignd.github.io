@@ -6,7 +6,7 @@
     @if (allVideos.length > 0) {
         <ul class="list">
             @for (video of allVideos; track video.id) {
-                <li cdkDrag>
+                <li cdkDrag cdkDragPreviewClass="custom-preview">
                     <app-video-card (onVideoSelected)="onClick($event)" [video]="video"></app-video-card>
                 </li>
             }

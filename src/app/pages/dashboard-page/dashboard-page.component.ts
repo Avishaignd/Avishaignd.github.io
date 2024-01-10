@@ -3,7 +3,7 @@ import { VideosService } from '../../services/videos.service';
 import { VideosListComponent } from '../../components/videos-list/videos-list.component';
 import IVideo from '../../components/video-card/video-card.interface';
 import { PreviewComponent } from '../../components/preview/preview.component';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule, moveItemInArray } from '@angular/cdk/drag-drop';
 import {CdkDragDrop, CdkDropList, CdkDrag, copyArrayItem} from '@angular/cdk/drag-drop';
 import { TrackComponent } from '../../components/track/track.component';
 import * as _ from 'lodash'
@@ -46,9 +46,9 @@ export class DashboardPageComponent {
     this.currentVideo = video
   }
 
-  drop(event: CdkDragDrop<any>) {
+  drop(event: CdkDragDrop<IVideo[]>) {
     if (event.container === event.previousContainer) {
-      return
+      moveItemInArray(this.trackVideos, event.previousIndex, event.currentIndex);
     } else {
       copyArrayItem(this.allVideos, this.trackVideos, event.previousIndex, event.currentIndex)
     }

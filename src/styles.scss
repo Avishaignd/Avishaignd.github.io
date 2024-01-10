@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.custom-preview {
+    width: 200px !important;
+    list-style: none;
+
+    .duration {
+        display: none;
+    }
+}
+
+.cdk-drag-placeholder {
+    list-style: none;
+    width: 200px;
+    
+    .duration {
+        display: none;
+    }
+}

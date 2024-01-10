@@ -1,27 +1,39 @@
 .track-wrapper {
   margin-block-start: 40px;
-  height: 75px;
+  height: 80px;
   border: 1px solid black;
   position: relative;
   --ticks-amount: ;
+  --tick-width: ;
   overflow-x: auto;
+
+  .cursor-element {
+    --x-pos: ;
+    width: 5px;
+    background-color: red;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--x-pos);
+    pointer-events: none;
+  }
 
   .track-list {
     display: flex;
-    padding-top: 20px;
     white-space: nowrap;
+    align-items: center;
 
     .track-item {
       --item-duration: ;
       background-color: lightgray;
       border: 1px solid black;
       border-radius: 10px;
-      padding: 15px;
+      padding: 10px;
       color: black;
       flex-shrink: 0;
       box-sizing: border-box;
       cursor: grab;
-      flex-basis: calc((var(--item-duration) / var(--ticks-amount)) * 100%);
+      width: calc(var(--item-duration) * var(--tick-width));
     }
 
     &.cdk-drop-list-dragging {
@@ -30,17 +42,13 @@
   }
 
   .ruler {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    background-color: black;
     color: white;
     display: flex;
     justify-content: space-between;
 
     span {
-      flex-basis: calc(100% / var(--ticks-amount));
+      width: var(--tick-width);
+      background-color: black;
     }
   }
 }
